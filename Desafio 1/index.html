@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Days Of Code - Dia 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="testes center">
+        <p id="valorNtipo">1 == '1' : </p>
+        <p id="valorEtipo">30 === '30' : </p>
+        <p id="Nvalor">10 !== '10' : </p>
+        <p id="tipoNvalor">'10' !== '30' : </p>
+    </div>
+    <script>
+        const numeroUm = 1, stringUm = '1';
+        const numeroTrinta = 30, stringTrinta = '30';
+        const numeroDez = 10, stringDez = '10';
+
+        const situacaoUm = document.querySelector('#valorNtipo');
+        const situacaoDois = document.querySelector('#valorEtipo');
+        const situacaoTres = document.querySelector('#Nvalor');
+        const situacaoQuatro = document.querySelector('#tipoNvalor');
+
+        (numeroUm == stringUm) ? situacaoUm.innerHTML += 'As variáveis numeroUm e stringUm tem o mesmo valor, mas tipos diferentes' :
+            situacaoUm.innerHTML += 'As variáveis numeroUm e stringUm não tem o mesmo valor';
+
+        (numeroTrinta === stringTrinta) ? situacaoDois.innerHTML += 'As variáveis numeroTrinta e stringTrinta tem o mesmo valor e mesmo tipo' :
+            situacaoDois.innerHTML += 'As variáveis numeroTrinta e stringTrinta não tem o mesmo tipo';
+
+        (numeroDez !== stringDez) ? situacaoTres.innerHTML += 'As variáveis numeroDez e stringDez tem o mesmo valor, mas tipos diferentes' :
+            situacaoTres.innerHTML += 'As variáveis numeroDez e stringDez não tem o mesmo valor';
+
+        (stringDez !== stringTrinta) ? situacaoQuatro.innerHTML += 'As variáveis stringDez e stringTrinta tem o mesmo tipo, mas valores diferentes' :
+            situacaoQuatro.innerHTML += 'As variáveis stringDez e stringTrinta não tem o mesmo tipo';
+    </script>
+</body>
+
+</html>

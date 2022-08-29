@@ -1,0 +1,10 @@
+.testes {
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+.center {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}

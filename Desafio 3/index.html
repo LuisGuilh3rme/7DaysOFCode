@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 days of code - Dia 3</title>
+</head>
+<body>
+    <script>
+        let area, especializacao, escolha, valido, i = 0; 
+        const tecnologia = [];
+
+        do {
+            valido = true;
+            area = prompt('Você gostaria de seguir para o front-end ou back-end?');
+
+            if (area == 'front-end' || area == 'front end' || area == 'front') {
+                area = 'front-end';
+                especializacao = prompt('Gostaria de aprender react ou Vue?');
+            }
+            else if (area == 'back-end' || area == 'back end' || area == 'back') {
+                area = 'back-end';
+                especializacao = prompt('Gostaria de aprender C# ou Java?');
+            }
+            else if (area == 'full-stack') especializacao = prompt('Full-stack? Interessante! No que deseja se especializar primeiro?');
+            
+            else {
+                alert('Resposta inválida, tente novamente!');
+                valido = false;
+            }
+
+        } while (valido == false);
+
+        do {
+            valido = true;
+            if (area != 'full-stack') {
+                escolha = prompt(`Você quer mesmo continuar na área de ${area} ou deseja se tornar full-stack?`);
+                if (escolha == 'sim' || escolha.includes('continuar')) alert(`Que bom que deseja focar em ${area} e ${especializacao}!`)
+                else if (escolha.includes('full-stack')) alert('Full-stack? Ótimo!');
+                else {
+                    alert('Resposta inválida, tente novamente!');
+                    valido = false;
+                }
+            }
+        }while (valido == false)
+
+        do {
+            tecnologia.length < 2 ? tecnologia.push(prompt('Escreva uma tecnologia que você quer se especializar: ')) :
+            tecnologia.push(prompt('Escreva outra tecnologia para se especializar: '));
+            comentarioTecnologia(tecnologia);
+            i++;
+        } while (prompt('Digite ok se quiser adicionar mais alguma tecnologia: ') == 'ok');
+
+        function comentarioTecnologia (tec) {
+            tec[i] = tec[i].toLowerCase();
+            switch (tec[i]) {
+                case 'html': alert('HTML? Interessante, exibir nossas tags no front-end é bem legal!'); break;
+                case 'css' : alert('CSS? Quem é que não gosta de estilizar as páginas?'); break;
+                case 'javascript': alert('Fica só entre nós: Eu também quero me especializar em javascript!'); break;
+                case 'c#' : alert('Se você quer focar no back-end, C# realmente é uma ótima escolha!'); break;
+                case 'python': alert('Python só cresce no mercado e é de fácil aprendizado, você consegue!'); break;
+                case 'java': alert('Uma das linguagens mais utilizadas no mercado, java realmente é uma boa escolha'); break;
+                case 'c++' :
+                case 'c': alert('C e C++ normalmente são as linguagens mais ensinadas nas faculdades, ta aí uma ótima escolha de aprendizado!'); break;
+                case 'go': alert('Essa é moderna ein? Perfeita se você quer desenvolver aplicações web ou APIs'); break;
+                default: alert(`${tec[i]}? Legal!`);
+            }
+        }
+        alert('Legal, muito obrigado pelas respostas.');
+
+        </script>
+</body>
+</html>

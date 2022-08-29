@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 days of code - Dia 4</title>
+</head>
+<body>
+    <script>
+        let tentativas = 3, acerto = false;
+        const numeroMaquina = Math.floor(Math.random() * (10) + 1);
+        do {    
+            const numeroUsuario = parseInt(prompt('Insira um número de 1 à 10: '));
+            if (numeroUsuario === numeroMaquina) {
+                alert('Parabéns, você acertou!');
+                acerto = true;
+            }
+            else alert('Uhm... Não é esse número');
+            tentativas--;
+        } while (tentativas > 0 && acerto == false);
+        if (acerto == false) alert('Tentativas esgotadas, o número pensado foi o ' + numeroMaquina);
+    </script>
+</body>
+</html>
