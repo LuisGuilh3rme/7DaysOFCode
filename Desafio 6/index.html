@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 days of code - Dia 6</title>
+
+<body>
+    <script>
+        const produtos = { frutas: [], doces: [], limpeza: [], higiene: [] };
+        let rep, tipo, opcao;
+        do {
+            rep = false;
+            tipo = prompt(' Insira o tipo de produto que você quer \n Disponíveis: frutas, doces, limpeza, higiene');
+            do {
+                switch (tipo.toLowerCase()) {
+                    default: alert('Tipo inválido, tente novamente!'); rep = true; break;
+                    case 'frutas': produtos.frutas.push(prompt(' Escreva à fruta a ser adicionada: ')); break;
+                    case 'doces': produtos.doces.push(prompt(' Escreva o doce a ser adicionado: ')); break;
+                    case 'limpeza': produtos.limpeza.push(prompt(' Escreva o produto de limpeza a ser adicionado: ')); break;
+                    case 'higiene': produtos.higiene.push(prompt(' Escreva o produto de higiene a ser adicionado: ')); break;
+                }
+                if (!rep) {
+                    opcao = prompt(` Opções de digíto: \n Adicionar mais um produto do tipo ${tipo}: ADICIONAR \n Adicionar outro tipo de produto: TROCAR \n Fechar lista: PARAR \n Verificar e remover: REMOVER`);
+                    opcao = opcao.toLowerCase();
+                    if (opcao == 'trocar') rep = true;
+                    if (opcao == 'remover') {
+                        do {
+                            rep = false;
+                            tipo = prompt(' Insira o tipo de produto que você quer remover \n Disponíveis: frutas, doces, limpeza, higiene \n Cancelar: CANCELAR');
+                            tipo = tipo.toLowerCase();
+                            if (tipo == 'frutas' && produtos.frutas.length > 1) verErem(produtos.frutas);
+                            else if (tipo == 'doces' && produtos.doces.length > 1) verErem(produtos.doces);
+                            else if (tipo == 'limpeza' && produtos.limpeza.length > 1) verErem(produtos.limpeza);
+                            else if (tipo == 'higiene' && produtos.higiene.length > 1) verErem(produtos.higiene);
+                            else if (tipo != 'cancelar') { alert('O tipo escolhido deve ter pelo menos dois itens na lista'); rep = true; }
+                        } while (rep == true);
+                    }
+                }
+            } while (opcao == 'adicionar');
+        } while (rep == true);
+        alert(` Produtos Selecionados: \n ${exibirProdutos()}`);
+
+        function exibirProdutos() {
+            return `Frutas : ${exibirTudo(produtos.frutas)} \n Doces : ${exibirTudo(produtos.doces)} \n Produtos de Limpeza : ${exibirTudo(produtos.limpeza)} \n Produtos de Higiene : ${exibirTudo(produtos.higiene)}`;
+        }
+
+        function exibirTudo(tipo) {
+            if (tipo.length < 1) return 'Nenhum produto adicionado';
+            return `${tipo.join(' - ').toString()} | ${tipo.length} adicionadas`;
+        }
+        function verErem(tipo) {
+            do {
+                let resposta = prompt(`Escolha um dos produtos: ${tipo.join(' - ').toString()} \n Terminar: FIM`);
+                resposta = resposta.toLowerCase();
+                if (resposta != 'fim') {
+                    tipo.includes(resposta) ? tipo.splice(tipo.indexOf(resposta), 1) : alert('Item não encontrado');
+                    if (tipo.length > 1) resposta = prompt(' Digite SIM para remover outro item desta lista');
+                }
+            } while (tipo.length > 1 && (resposta.toLowerCase() != 'sim' || resposta != 'fim'));
+        }
+    </script>
+</body>
+
+</html>

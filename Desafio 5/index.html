@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 days of code - Dia 5</title>
+<body>
+    <script>
+        const produtos = {frutas: [], doces: [], limpeza : [], higiene : []};
+        let rep, tipo, opcao;
+        do {
+            rep = false;
+            tipo = prompt(' Insira o tipo de produto que você quer \n Disponíveis: frutas, doces, limpeza, higiene');
+            do {
+                switch (tipo.toLowerCase()){
+                    default: alert('Tipo inválido, tente novamente!'); rep = true; break;
+                    case 'frutas': produtos.frutas.push(prompt(' Escreva à fruta a ser adicionada: ')); break;
+                    case 'doces': produtos.doces.push(prompt(' Escreva o doce a ser adicionado: ')); break;
+                    case 'limpeza': produtos.limpeza.push(prompt(' Escreva o produto de limpeza a ser adicionado: ')); break;
+                    case 'higiene': produtos.higiene.push(prompt(' Escreva o produto de higiene a ser adicionado: ')); break;
+                }
+                if (!rep) {
+                    opcao = prompt(` Opções de digíto: \n Adicionar mais um produto do tipo ${tipo}: ADICIONAR \n Adicionar outro tipo de produto: TROCAR \n Fechar lista: PARAR`);
+                    opcao = opcao.toLowerCase();
+                    if (opcao == 'trocar') rep = true;
+                }
+            } while (opcao == 'adicionar' && rep == false);
+        } while (rep == true);
+        alert(`Produtos Selecionados: \n ${exibirProdutos()}`);
+
+        function exibirProdutos() {
+            return ` Frutas : ${exibirTudo(produtos.frutas)} \n Doces : ${exibirTudo(produtos.doces)} \n Produtos de Limpeza : ${exibirTudo(produtos.limpeza)} \n  Produtos de Higiene : ${exibirTudo(produtos.higiene)}`;
+        }
+
+        function exibirTudo(produto) {
+            if (produto.length < 1) return 'Nenhum adicionado';
+            return resposta =  `${produto.join(' - ').toString()} | ${produto.length} adicionadas`;
+        }
+    </script>
+</body>
+</html>
